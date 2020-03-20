@@ -1,0 +1,7 @@
+const ADD_PRODUCT = 'ADD_PRODUCT';
+const RESET_PRODUCTS = 'RESET_PRODUCTS';
+
+export default {
+ADD_PRODUCT,
+RESET_PRODUCTS,
+}

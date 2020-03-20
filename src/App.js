@@ -1,6 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from './reducers';
+
+// import {productsActions} from './app/products/duck'
+
+
+const store = createStore(rootReducer, composeWithDevTools());
+window.store = store
+
+// store.dispatch(productsActions.add('grapes'));
+
+
+
 
 function App() {
   return (
