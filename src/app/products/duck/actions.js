@@ -1,7 +1,7 @@
 import types from './types';
 
-const add = item => ({
-    type: types.ADD_PRODUCT, item
+const add = (item, itemCategory) => ({
+    type: types.ADD_PRODUCT, item,  itemCategory
 })
 
 const reset = item => ({
