@@ -11,7 +11,7 @@ const INITIAL_STATE = {
     switch (action.type) {
       case types.ADD_PRODUCT:
         return {
-          ...state, list: [...state.list, action.item]
+          ...state, list: [...state.list, action.item - action.itemCategory - action.isImportant]
         }
       case types.RESET_PRODUCTS:
         return {
