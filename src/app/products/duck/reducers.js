@@ -2,16 +2,29 @@ import types from './types';
 
 const INITIAL_STATE = {
     listName: 'fruits',
-    list: [
+    listOfFruits: [
       'apples', 'bananas', 'lemon'
+    ],
+    listOfVegetables: [
+      'carrot', 'tomato'
     ]
+    
   }
 
   const productsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case types.ADD_PRODUCT:
         return {
-          ...state, list: [...state.list, action.item - action.itemCategory - action.isImportant]
+         
+          ...state, 
+          listOfFruits: [...state.listOfFruits,
+            action.itemCategory === "fruit" &&
+            action.item ],
+
+          listOfVegetables: [...state.listOfVegetables,
+            action.itemCategory === "vegetable" &&
+            action.item],
+
         }
       case types.RESET_PRODUCTS:
         return {
@@ -20,6 +33,7 @@ const INITIAL_STATE = {
       default:
         return state
     }
+  
   }
 
   export default productsReducer;

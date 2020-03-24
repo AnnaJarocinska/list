@@ -33,7 +33,11 @@ class ProductsForm extends Component {
 
      addProduct =  ( event) => {
         event.preventDefault()
-        this.props.add(this.state.inputValue,  this.state.selectValue, this.state.isImportant )
+        this.props.add(this.state.inputValue,this.state.selectValue, this.state.isImportant)
+        // this.props.add(this.state.inputValue)
+        // this.props.add(this.state.selectValue)
+        // this.props.add(this.state.isImportant )
+
         console.log( this.state.selectValue)
         console.log( this.state.inputValue)
         console.log( this.state.isImportant)
@@ -64,7 +68,7 @@ class ProductsForm extends Component {
 
 
  const mapDispatchToProps = dispatch => ({
-    add: product => dispatch(actions.add(product))
+    add: (product, category, importance) => dispatch(actions.add(product, category, importance ))
 })
 
 
