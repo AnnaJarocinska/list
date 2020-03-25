@@ -2,23 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-const ProductsCotainer = (props) => 
- 
-<div>
-    <h1> fruits </h1>
+const ProductsCotainer = (props) =>
 
-    <ul>
+
+    <div>
+        <h1> fruits </h1>
+        <ul>
+
+            {props.products.fruitList.map(product => <li>{product}</li>)}
+        </ul>
+
+        <h1> vegetables </h1>
+        <ul>
+
+            {props.products.vegetableList.map(product => <li>{product}</li>)}
+        </ul>
+
+        {/* <h1>
+ { props.products.dairyList.map(product => <li>{product}</li>) == '' ?  ''  : 'dairy'}
+
+</h1> */}
+<h1>
+ { props.products.dairyList != '' ?  'dairy'  : ''}
+
+</h1>
         
-        {props.products.listOfFruits.map(product => <li>{product}</li>)}
-    </ul>
+        <ul>
+            {props.products.dairyList.map(product => <li>{product}</li>)}
+        </ul>
 
-    <h1> vegetables </h1>
-    <ul>
-        
-        {props.products.listOfVegetables.map(product => <li>{product}</li>)}
-    </ul>
-
-</div>
+    </div>
 
 const mapStateToProps = state => ({
     products: state.products

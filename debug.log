@@ -1,0 +1,12 @@
+[0324/163941.698:ERROR:process_reader_win.cc(151)] SuspendThread: Odmowa dostêpu. (0x5)
+[0324/163941.702:ERROR:process_reader_win.cc(123)] NtOpenThread: {Odmowa dostêpu} Proces za¿¹da³ dostêpu do obiektu, ale prawa dostêpu nie zosta³y przyznane. (0xc0000022)
+[0324/163941.707:ERROR:exception_snapshot_win.cc(98)] thread ID 9824 not found in process
+[0324/163941.746:ERROR:process_reader_win.cc(151)] SuspendThread: Odmowa dostêpu. (0x5)
+[0324/163941.746:ERROR:exception_snapshot_win.cc(98)] thread ID 9332 not found in process
+[0324/163941.798:ERROR:process_reader_win.cc(151)] SuspendThread: Odmowa dostêpu. (0x5)
+[0324/163941.798:ERROR:process_reader_win.cc(151)] SuspendThread: Odmowa dostêpu. (0x5)
+[0324/163941.798:ERROR:exception_snapshot_win.cc(98)] thread ID 12760 not found in process
+[0324/163941.803:ERROR:process_info.cc(329)] VirtualQueryEx: Odmowa dostêpu. (0x5)
+[0324/163941.803:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[0324/163941.803:ERROR:process_memory_win.cc(39)] Failed to initialize ProcessInfo.
+[0324/163941.803:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Podjêto próbê uzyskania dostêpu do procesu koñcz¹cego dzia³anie. (0xc000010a)
