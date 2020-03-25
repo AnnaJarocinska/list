@@ -8,7 +8,7 @@ class ProductsForm extends Component {
         super(props);
         this.state = {
             inputValue: "",
-            selectValue: "vegetable",
+            selectValue: "",
             isImportant: false,
         }
     }
@@ -31,12 +31,13 @@ class ProductsForm extends Component {
         })
     }
 
+    handleResetClick = () => {
+        this.props.reset()
+    }
+
     addProduct = (event) => {
         event.preventDefault()
         this.props.add(this.state.inputValue, this.state.selectValue, this.state.isImportant)
-        // this.props.add(this.state.inputValue)
-        // this.props.add(this.state.selectValue)
-        // this.props.add(this.state.isImportant )
 
         console.log(this.state.selectValue)
         console.log(this.state.inputValue)
@@ -52,22 +53,25 @@ class ProductsForm extends Component {
                 <option value="fruit">fruit</option>
                 <option value="vegetable">vegetable</option>
                 <option value="dairy">dairy</option>
-                <option value="meat">meat</option>
-                <option value="fish">fish</option>
-                <option value="household ites">household items</option>
-                <option value="dry goods">dry goods</option>
+                <option value="meatandfish">meat and fish</option>
+                <option value="drygoods">dry goods</option>
+                <option value="householditems">household items</option>
                 <option value="others">others</option>
             </select>
             <label>important</label>
             <input type="checkbox" onChange={this.handleCheckboxChange} />
             <button type='submit'>Add product</button>
-        </form>);
-    }
+      
+        <button onClick ={this.handleResetClick}> reset list </button>
+        </form>)
+    
+        }
 }
 
 
 const mapDispatchToProps = dispatch => ({
-    add: (product, category, importance) => dispatch(actions.add(product, category, importance))
+    add: (product, category, importance) => dispatch(actions.add(product, category, importance)),
+    reset: () => dispatch(actions.reset())
 })
 
 
