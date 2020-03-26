@@ -1,22 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import actions from '../duck/actions';
 
 
-const ProductsCotainer = (props) =>
 
-    <div>
+const ProductsCotainer = (props) => {
+    const handleDeleteClick = (e) => {
+    console.log('delete')
+    console.log(e.target.id)
+    e.preventDefault()
+    props.deleteProduct('vegetable', e.target.id)
+
+};
+return( <div>
         <h1>
             { props.products.fruitList.length !== 0 ?  'fruits'  : ''}
         </h1>
         <ul>
-            {props.products.fruitList.map(product => <li>{product}</li>)}
+            {props.products.fruitList.map(product =>
+                 <li key ={product}
+                  id={props.products.fruitList.indexOf(product)}
+                  onClick={handleDeleteClick}>
+                      {product} 
+                      </li> )}
         </ul>
 
         <h1>
             { props.products.vegetableList.length !== 0 ?  'vegetables'  : ''}
         </h1>
         <ul>
-            {props.products.vegetableList.map(product => <li>{product}</li>)}
+            {props.products.vegetableList.map(product => 
+             <li key ={product}
+             id={props.products.vegetableList.indexOf(product)}
+             onClick={handleDeleteClick}>
+                {product}
+                </li>)}
         </ul>
       
         <h1>
@@ -55,8 +73,14 @@ const ProductsCotainer = (props) =>
         </ul>
     </div>
 
+)}
+
 const mapStateToProps = state => ({
     products: state.products
 })
 
-export default connect(mapStateToProps, {})(ProductsCotainer)
+const mapDispatchToProps = dispatch => ({
+    deleteProduct: (category, productId) => dispatch(actions.deleteProduct(category,productId)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsCotainer)

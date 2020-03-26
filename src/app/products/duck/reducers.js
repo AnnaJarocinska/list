@@ -74,6 +74,30 @@ const INITIAL_STATE = {
           householdItemsList:[],
           othersList:[],
         }
+
+        case types.DELETE_PRODUCT:
+          return {
+            ...state,
+            
+          
+            fruitList: 
+            action.itemCategory === "fruit" ?
+          [...state.fruitList.slice(1,action.id)]:
+          [...state.fruitList],
+          
+
+            
+           vegetableList: 
+           action.itemCategory === "vegetable" ?
+           [...state.vegetableList.slice(1,action.id)]:
+           [...state.vegetableList],
+            // dairyList: [],
+            // meatAndFishList:[],
+            // dryGoodsList:[],
+            // householdItemsList:[],
+            // othersList:[],
+          }
+
       default:
         return state
     }
