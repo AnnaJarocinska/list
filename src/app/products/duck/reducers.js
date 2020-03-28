@@ -2,106 +2,118 @@ import types from './types';
 
 const INITIAL_STATE = {
 
-    listName: 'shopping list',
+  listName: 'shopping list',
 
-    fruitList: ['apples', 'bananas', 'lemon'],
+  fruitList: ['bananas', 'lemon'],
 
-    vegetableList: ['carrot', 'tomato'],
+  vegetableList: ['carrot', 'tomato'],
 
-    dairyList: [],
+  dairyList: [],
 
-    meatAndFishList: [],
+  meatAndFishList: [],
 
-    dryGoodsList: [],
+  dryGoodsList: [],
 
-    householdItemsList: [],
+  householdItemsList: [],
 
-    othersList: [],
-    
-  }
+  othersList: [],
 
-  const productsReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-      case types.ADD_PRODUCT:
-        return {
-         
-          ...state, 
+}
 
-          fruitList: 
-            action.itemCategory === "fruit" ?
-         [ ...state.fruitList,
-            action.item ] : [...state.fruitList],
+const productsReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case types.ADD_PRODUCT:
+      return {
 
-          vegetableList:
+        ...state,
+
+        fruitList:
+          action.itemCategory === "fruit" ?
+            [...state.fruitList,
+            action.item] : [...state.fruitList],
+
+        vegetableList:
           action.itemCategory === "vegetable" ?
-          [ ...state.vegetableList,
-             action.item ] : [...state.vegetableList],
+            [...state.vegetableList,
+            action.item] : [...state.vegetableList],
 
-          dairyList:
+        dairyList:
           action.itemCategory === "dairy" ?
-          [ ...state.dairyList,
-          action.item ] : [...state.dairyList], 
+            [...state.dairyList,
+            action.item] : [...state.dairyList],
 
-          meatAndFishList:
+        meatAndFishList:
           action.itemCategory === "meatandfish" ?
-          [ ...state.meatAndFishList,
-          action.item ] : [...state.meatAndFishList], 
+            [...state.meatAndFishList,
+            action.item] : [...state.meatAndFishList],
 
-          dryGoodsList:
+        dryGoodsList:
           action.itemCategory === "drygoods" ?
-          [ ...state.dryGoodsList,
-          action.item ] : [...state.dryGoodsList], 
+            [...state.dryGoodsList,
+            action.item] : [...state.dryGoodsList],
 
-          householdItemsList:
+        householdItemsList:
           action.itemCategory === "householditems" ?
-          [ ...state.householdItemsList,
-          action.item ] : [...state.householdItemsList],
-          
-          othersList:
+            [...state.householdItemsList,
+            action.item] : [...state.householdItemsList],
+
+        othersList:
           action.itemCategory === "others" ?
-          [ ...state.othersList,
-          action.item ] : [...state.othersList], 
-        }
+            [...state.othersList,
+            action.item] : [...state.othersList],
+      }
 
-      case types.RESET_PRODUCTS:
-        return {
-          
-          fruitList: [],
-          vegetableList: [],
-          dairyList: [],
-          meatAndFishList:[],
-          dryGoodsList:[],
-          householdItemsList:[],
-          othersList:[],
-        }
+    case types.RESET_PRODUCTS:
+      return {
 
-        case types.DELETE_PRODUCT:
-          return {
-            ...state,
-            
-          
-            fruitList: 
-            action.itemCategory === "fruit" ?
-          [...state.fruitList.slice(1,action.id)]:
-          [...state.fruitList],
-          
+        fruitList: [],
+        vegetableList: [],
+        dairyList: [],
+        meatAndFishList: [],
+        dryGoodsList: [],
+        householdItemsList: [],
+        othersList: [],
+      }
 
-            
-           vegetableList: 
-           action.itemCategory === "vegetable" ?
-           [...state.vegetableList.slice(1,action.id)]:
-           [...state.vegetableList],
-            // dairyList: [],
-            // meatAndFishList:[],
-            // dryGoodsList:[],
-            // householdItemsList:[],
-            // othersList:[],
-          }
+    case types.DELETE_PRODUCT:
 
-      default:
-        return state
-    }
-  
+      // function isThisIt(product){
+      //   return product !== action.item;
+      // }
+      console.log('id w reducerze', action.id)
+      // const products = [...state.fruitList]
+      // const index = products.findIndex(isThisIt)
+      // products.splice(index, 1)
+      state.fruitList.splice(action.id, 1)
+      return {
+        ...state,
+
+        // ...state.fruitList.splice(action.id,1),
+        // fruitList:
+        //   [...state.fruitList],
+        //   action.itemCategory === "fruit" ?
+        // [...state.fruitList.splice(action.id,1)]:
+        // [...state.fruitList],
+
+
+
+        //  vegetableList: 
+        //  action.itemCategory === "vegetable" ?
+        //  [...state.vegetableList.splice(action.id, 1)]
+        //  :[...state.vegetableList],
+
+
+        // dairyList: [],
+        // meatAndFishList:[],
+        // dryGoodsList:[],
+        // householdItemsList:[],
+        // othersList:[],
+      }
+
+    default:
+      return state
   }
 
-  export default productsReducer;
+}
+
+export default productsReducer;

@@ -7,9 +7,11 @@ import actions from '../duck/actions';
 const ProductsCotainer = (props) => {
     const handleDeleteClick = (e) => {
     console.log('delete')
-    console.log(e.target.id)
+    console.log('id', e.target.id)
+    console.log('props', props)
+    console.log('key', e.target.key)
     e.preventDefault()
-    props.deleteProduct('vegetable', e.target.id)
+    props.deleteProduct('fruit', e.target.id)
 
 };
 return( <div>
@@ -17,9 +19,10 @@ return( <div>
             { props.products.fruitList.length !== 0 ?  'fruits'  : ''}
         </h1>
         <ul>
-            {props.products.fruitList.map(product =>
-                 <li key ={product}
+            {props.products.fruitList.map((product) =>
+                 <li 
                   id={props.products.fruitList.indexOf(product)}
+                  key ={props.products.fruitList[props.products.fruitList.indexOf(product)].toString()}
                   onClick={handleDeleteClick}>
                       {product} 
                       </li> )}

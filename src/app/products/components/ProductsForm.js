@@ -8,7 +8,7 @@ class ProductsForm extends Component {
         super(props);
         this.state = {
             inputValue: "",
-            selectValue: "",
+            selectValue: "vegetable",
             isImportant: false,
         }
     }
