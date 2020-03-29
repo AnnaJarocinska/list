@@ -38,10 +38,6 @@ class ProductsForm extends Component {
     addProduct = (event) => {
         event.preventDefault()
         this.props.add(this.state.inputValue, this.state.selectValue, this.state.isImportant)
-
-        console.log(this.state.selectValue)
-        console.log(this.state.inputValue)
-        console.log(this.state.isImportant)
     }
 
     render() {

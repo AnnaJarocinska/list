@@ -8,8 +8,8 @@ const reset = item => ({
     type: types.RESET_PRODUCTS, item
 })
 
-const deleteProduct = (  itemCategory, id) => ({
-    type: types.DELETE_PRODUCT, itemCategory, id
+const deleteProduct = (item, id) => ({
+    type: types.DELETE_PRODUCT, item, id
 })
 export default {
     add,

@@ -4,19 +4,19 @@ const INITIAL_STATE = {
 
   listName: 'shopping list',
 
-  fruitList: ['bananas', 'lemon'],
+  fruitList: ['apples', 'bananas', 'lemon'],
 
   vegetableList: ['carrot', 'tomato'],
 
-  dairyList: [],
+  dairyList: ['milk', 'eggs'],
 
-  meatAndFishList: [],
+  meatAndFishList: ['chicken', 'sausages'],
 
-  dryGoodsList: [],
+  dryGoodsList: ['flour', 'rice'],
 
-  householdItemsList: [],
+  householdItemsList: ['paper'],
 
-  othersList: [],
+  othersList: ['ketchup', 'juice', 'cookies'],
 
 }
 
@@ -77,37 +77,36 @@ const productsReducer = (state = INITIAL_STATE, action) => {
 
     case types.DELETE_PRODUCT:
 
-      // function isThisIt(product){
-      //   return product !== action.item;
-      // }
-      console.log('id w reducerze', action.id)
-      // const products = [...state.fruitList]
-      // const index = products.findIndex(isThisIt)
-      // products.splice(index, 1)
+      state.fruitList.includes(action.item)
+       &&
       state.fruitList.splice(action.id, 1)
+
+      state.vegetableList.includes(action.item)
+       &&
+      state.vegetableList.splice(action.id, 1)
+
+      state.dairyList.includes(action.item)
+       &&
+      state.dairyList.splice(action.id, 1)
+
+      state.meatAndFishList.includes(action.item)
+       &&
+      state.meatAndFishList.splice(action.id, 1)
+
+      state.dryGoodsList.includes(action.item)
+       &&
+      state.dryGoodsList.splice(action.id, 1)
+
+      state.householdItemsList.includes(action.item)
+       &&
+      state.householdItemsList.splice(action.id, 1)
+
+      state.othersList.includes(action.item)
+       &&
+      state.othersList.splice(action.id, 1)
+
       return {
         ...state,
-
-        // ...state.fruitList.splice(action.id,1),
-        // fruitList:
-        //   [...state.fruitList],
-        //   action.itemCategory === "fruit" ?
-        // [...state.fruitList.splice(action.id,1)]:
-        // [...state.fruitList],
-
-
-
-        //  vegetableList: 
-        //  action.itemCategory === "vegetable" ?
-        //  [...state.vegetableList.splice(action.id, 1)]
-        //  :[...state.vegetableList],
-
-
-        // dairyList: [],
-        // meatAndFishList:[],
-        // dryGoodsList:[],
-        // householdItemsList:[],
-        // othersList:[],
       }
 
     default:
