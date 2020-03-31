@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../duck/actions';
+import ErrorsInForm from './ErrorsInForm';
 
 
 class ProductsForm extends Component {
@@ -8,7 +9,7 @@ class ProductsForm extends Component {
         super(props);
         this.state = {
             inputValue: "",
-            selectValue: "vegetable",
+            selectValue: "-",
             isImportant: false,
         }
     }
@@ -35,17 +36,27 @@ class ProductsForm extends Component {
         this.props.reset()
     }
 
+    errorsInForm = null
+
     addProduct = (event) => {
-        event.preventDefault()
-        this.props.add(this.state.inputValue, this.state.selectValue, this.state.isImportant)
+        event.preventDefault();
+        this.props.add(this.state.inputValue, this.state.selectValue, this.state.isImportant);
+        this.setState({
+            inputValue: "",
+            selectValue: "-"
+        })
+        this.errorsInForm = <ErrorsInForm category = {this.state.selectValue}/>
     }
 
+
     render() {
-        return (<form onSubmit={this.addProduct}>
+        return (<>
+        <form onSubmit={this.addProduct}>
             <input value={this.state.inputValue} onChange={this.handleInputChange}></input>
 
             <label for="category">Choose a category:</label>
             <select value={this.state.selectValue} onChange={this.handleSelectChange}>
+                <option value="-">-</option>
                 <option value="fruit">fruit</option>
                 <option value="vegetable">vegetable</option>
                 <option value="dairy">dairy</option>
@@ -57,11 +68,14 @@ class ProductsForm extends Component {
             <label>important</label>
             <input type="checkbox" onChange={this.handleCheckboxChange} />
             <button type='submit'>Add product</button>
-      
-        <button onClick ={this.handleResetClick}> reset list </button>
-        </form>)
-    
-        }
+
+            <button onClick={this.handleResetClick}> reset all list </button>
+        </form>
+        {this.errorsInForm}
+        </>)
+
+
+    }
 }
 
 

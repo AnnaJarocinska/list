@@ -2,8 +2,6 @@ import types from './types';
 
 const INITIAL_STATE = {
 
-  listName: 'shopping list',
-
   fruitList: ['apples', 'bananas', 'lemon'],
 
   vegetableList: ['carrot', 'tomato'],
@@ -17,16 +15,14 @@ const INITIAL_STATE = {
   householdItemsList: ['paper'],
 
   othersList: ['ketchup', 'juice', 'cookies'],
-
+  
 }
 
 const productsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.ADD_PRODUCT:
       return {
-
         ...state,
-
         fruitList:
           action.itemCategory === "fruit" ?
             [...state.fruitList,
@@ -65,7 +61,7 @@ const productsReducer = (state = INITIAL_STATE, action) => {
 
     case types.RESET_PRODUCTS:
       return {
-
+        ...state,
         fruitList: [],
         vegetableList: [],
         dairyList: [],
@@ -76,35 +72,14 @@ const productsReducer = (state = INITIAL_STATE, action) => {
       }
 
     case types.DELETE_PRODUCT:
-
-      state.fruitList.includes(action.item)
-       &&
-      state.fruitList.splice(action.id, 1)
-
-      state.vegetableList.includes(action.item)
-       &&
-      state.vegetableList.splice(action.id, 1)
-
-      state.dairyList.includes(action.item)
-       &&
-      state.dairyList.splice(action.id, 1)
-
-      state.meatAndFishList.includes(action.item)
-       &&
-      state.meatAndFishList.splice(action.id, 1)
-
-      state.dryGoodsList.includes(action.item)
-       &&
-      state.dryGoodsList.splice(action.id, 1)
-
-      state.householdItemsList.includes(action.item)
-       &&
-      state.householdItemsList.splice(action.id, 1)
-
-      state.othersList.includes(action.item)
-       &&
-      state.othersList.splice(action.id, 1)
-
+      
+      for (let list of Object.keys(state)) {
+        state[list].forEach(element => {
+          element.includes(action.item)
+          &&
+          state[list].splice(action.id, 1)
+        });
+      }
       return {
         ...state,
       }
@@ -112,7 +87,6 @@ const productsReducer = (state = INITIAL_STATE, action) => {
     default:
       return state
   }
-
 }
 
 export default productsReducer;
