@@ -8,41 +8,41 @@ const ProductsCotainer = (props) => {
 
     const { fruitList, vegetableList, dairyList, meatAndFishList, dryGoodsList, householdItemsList, othersList } = props.products;
 
-    const handleDeleteClick = (e) => {
-        console.log(e.target.value)
-        for (let list of Object.keys(props.products)) {
+    // const handleDeleteClick = (e) => {
+    //     console.log(e.target.value)
+    //     for (let list of Object.keys(props.products)) {
 
-            props.deleteProduct(props.products[list][e.target.id], e.target.id)
-        }
-    }
+    //         props.deleteProduct(props.products[list][e.target.id], e.target.id)
+    //     }
+    // }
 
-    // const handleDeleteClickFruit = (e) => {
-    //     props.deleteProduct(fruitList[e.target.id], e.target.id)
-    // };
+    const handleDeleteClickFruit = (e) => {
+        props.deleteProduct(fruitList[e.target.id], e.target.id)
+    };
 
-    // const handleDeleteClickVegetable = (e) => {
-    //     props.deleteProduct(vegetableList[e.target.id], e.target.id)
-    // };
+    const handleDeleteClickVegetable = (e) => {
+        props.deleteProduct(vegetableList[e.target.id], e.target.id)
+    };
 
-    // const handleDeleteClickDairy = (e) => {
-    //     props.deleteProduct(dairyList[e.target.id], e.target.id)
-    // };
+    const handleDeleteClickDairy = (e) => {
+        props.deleteProduct(dairyList[e.target.id], e.target.id)
+    };
 
-    // const handleDeleteClickMeatAndFish = (e) => {
-    //     props.deleteProduct(meatAndFishList[e.target.id], e.target.id)
-    // };
+    const handleDeleteClickMeatAndFish = (e) => {
+        props.deleteProduct(meatAndFishList[e.target.id], e.target.id)
+    };
 
-    // const handleDeleteClickDryGoods = (e) => {
-    //     props.deleteProduct(dryGoodsList[e.target.id], e.target.id)
-    // };
+    const handleDeleteClickDryGoods = (e) => {
+        props.deleteProduct(dryGoodsList[e.target.id], e.target.id)
+    };
 
-    // const handleDeleteClickHouseholdItems = (e) => {
-    //     props.deleteProduct(householdItemsList[e.target.id], e.target.id)
-    // };
+    const handleDeleteClickHouseholdItems = (e) => {
+        props.deleteProduct(householdItemsList[e.target.id], e.target.id)
+    };
 
-    // const handleDeleteClickOthers = (e) => {
-    //     props.deleteProduct(othersList[e.target.id], e.target.id)
-    // };
+    const handleDeleteClickOthers = (e) => {
+        props.deleteProduct(othersList[e.target.id], e.target.id)
+    };
 
     return (<div>
         <h1>
@@ -54,7 +54,7 @@ const ProductsCotainer = (props) => {
 
                     id={fruitList.indexOf(product)}
                     key={product}
-                    onClick={handleDeleteClick}>
+                    onClick={handleDeleteClickFruit}>
                     {product}
                 </li>)}
         </ul>
@@ -66,7 +66,7 @@ const ProductsCotainer = (props) => {
             {vegetableList.map(product =>
                 <li key={product}
                     id={vegetableList.indexOf(product)}
-                    onClick={handleDeleteClick}>
+                    onClick={handleDeleteClickVegetable}>
                     {product}
                 </li>)}
         </ul>
@@ -78,7 +78,7 @@ const ProductsCotainer = (props) => {
             {dairyList.map(product =>
                 <li key={product}
                     id={dairyList.indexOf(product)}
-                    onClick={handleDeleteClick}>
+                    onClick={handleDeleteClickDairy}>
                     {product}
                 </li>)}
         </ul>
@@ -90,7 +90,7 @@ const ProductsCotainer = (props) => {
             {meatAndFishList.map(product =>
                 <li key={product}
                     id={meatAndFishList.indexOf(product)}
-                    onClick={handleDeleteClick}>
+                    onClick={handleDeleteClickMeatAndFish}>
                     {product}
                 </li>)}
         </ul>
@@ -102,7 +102,7 @@ const ProductsCotainer = (props) => {
             {dryGoodsList.map(product =>
                 <li key={product}
                     id={dryGoodsList.indexOf(product)}
-                    onClick={handleDeleteClick}>
+                    onClick={handleDeleteClickDryGoods}>
                     {product}
                 </li>)}
         </ul>
@@ -114,7 +114,7 @@ const ProductsCotainer = (props) => {
             {householdItemsList.map(product =>
                 <li key={product}
                     id={householdItemsList.indexOf(product)}
-                    onClick={handleDeleteClick}>
+                    onClick={handleDeleteClickHouseholdItems}>
                     {product}
                 </li>)}
         </ul>
@@ -126,7 +126,7 @@ const ProductsCotainer = (props) => {
             {othersList.map(product =>
                 <li key={product}
                     id={othersList.indexOf(product)}
-                    onClick={handleDeleteClick}>
+                    onClick={handleDeleteClickOthers}>
                     {product}
                 </li>)}
         </ul>
